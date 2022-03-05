@@ -47,7 +47,7 @@ You can find your Discord token with the command: `Discord Chat: Grab your perso
 
 ⚠️ A folder must be opened in VSCode to execute this command
 
-### Generate code easily:
+### Generate code easily with snippets!
 
 ### Python ([Nextcord](https://nextcord.readthedocs.io/en/latest/)):
 
