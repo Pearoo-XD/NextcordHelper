@@ -4,7 +4,6 @@
 		"body": [
 			"import nextcord",
             "from nextcord.ext import commands",
-            "import json",
             "import os",
             "",
             "# The bot",
@@ -12,16 +11,16 @@
             "client.remove_command(\"help\")",
             "",
             "# Load cogs",
-            "for filename in os.listdir(./cogs):",
-            "\tif filename.endswith(\".py\")",
+            "for filename in os.listdir(\"./cogs\"):",
+            "\tif filename.endswith(\".py\"):",
             "\t\tclient.load_extension(f\"cogs.{filename[:-3]}\")",
             "",
             "@client.event",
             "async def on_ready():",
             "\tprint(f\"Bot successfully started!\")",
-            "\tawait bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name =f\"{client.command_prefix}help\"))",
+            "\tawait client.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.watching, name=f\"{client.command_prefix}help\"))",
             "",
-            "bot.run(\"INSERT_YOUR_TOKEN_HERE\")"
+            "client.run(\"INSERT_YOUR_TOKEN_HERE\")"
 		],
         "description": "Create a basic Discord bot main.py file."
     },
@@ -38,7 +37,7 @@
             "\t\tself.client = client",
             "",    
             "",        
-            "\t@commands.command(name = \"${2:commandName}\", usage=\"${3:<usage>}\", description = \"${4:description}\")",
+            "\t@commands.command(usage=f\"${2:{self.client.command_prefix}{3:command}\", description = \"${4:description}\")",
             "\tasync def ${6:commandName}(self, ctx):",
             "\t\t${7:await ctx.send(\"Hello World!\")}",
             "",
@@ -52,8 +51,8 @@
     "Default Discord bot command": {
 		"prefix": ["ncd.cmd", "ncd.command"],
 		"body": [
-            "@commands.command(name = \"${1:commandName}\", aliases=[\"${2:aliase}\"])",
-            "async def ${3:commandName}(self, ctx):",
+            "@commands.command(aliases=[\"${1:alias1}\", \"${2:alias2}\"])",
+            "async def ${3:commandName}(ctx):",
             "\t${4:await ctx.send(\"Hello World!\")}"
 		],
         "description": "Create a basic Discord command."
@@ -62,13 +61,13 @@
     "Complex Discord bot command": {
 		"prefix": ["ncd.cmd+", "ncd.command+"],
 		"body": [
-            "@commands.command(aliases=[\"${2:aliase}\"], usage=\"${3:<usage>}\", description = \"${4:description}\")",
-            "@commands.guild_only($5)",
-            "@commands.has_permissions($6)",
-            "@commands.bot_has_permissions($7)",
-            "@commands.cooldown(1, ${8:2}, commands.BucketType.member)",
-            "async def ${9:commandName}(self, ctx):",
-            "\t${10:await ctx.send(\"Hello World!\")}"
+            "@commands.command(aliases=[\"${1:alias1}\"], usage=\"${2:usage}\", description = \"${3:description}\")",
+            "@commands.guild_only(${4:True})",
+            "@commands.has_permissions($5=True)",
+            "@commands.bot_has_permissions($5=True)",
+            "@commands.cooldown(1, ${6:2}, commands.BucketType.member)",
+            "async def ${7:commandName}(ctx):",
+            "\t${8:await ctx.send(\"Hello World!\")}"
 		],
         "description": "Create a complex Discord command."
     },
@@ -76,7 +75,7 @@
     "Default Discord bot embed": {
 		"prefix": "ncd.embed",
 		"body": [
-            "embed=discord.Embed(title=\"${1:title}\", description=\"${2:description}\", color=${3:0xff0000})",
+            "embed=nextcord.Embed(title=\"${1:title}\", description=\"${2:description}\", color=${3:nextcord.Colour.white()})",
             "embed.add_field(name=\"${4:field}\", value=\"${5:value}\", inline=${6:False})",
             "await ctx.send(embed=embed)"
 		],
@@ -86,7 +85,7 @@
     "Complex Discord bot embed": {
 		"prefix": "ncd.embed+",
 		"body": [
-            "embed=discord.Embed(title=\"${1:title}\", description=\"${2:description}\", color=${3:0xff0000})",
+            "embed=nextcord.Embed(title=\"${1:title}\", description=\"${2:description}\", color=${3:nextcord.Colour.white()})",
             "embed.set_author(name=\"${4:name}\", url=\"${5:url}\", icon_url=\"${6:icon}\")",
             "embed.set_thumbnail(url=\"${7:thumbnail}\")",
             "embed.add_field(name=\"${8:field}\", value=\"${9:value}\", inline=${10:False})",
