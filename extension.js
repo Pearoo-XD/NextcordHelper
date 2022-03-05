@@ -154,13 +154,13 @@ function activate(context) {
     // Generate a python template bot (Discord.py)
 	let pyBotTemplate = vscode.commands.registerCommand('discord-tools.pyBotTemplate', async function () {
         const legend = {
-            "Install Discord module": {
+            "Install Nextcord module": {
                 "packages": true,
 				"package_manager": { 
-                    "PyPI": "pip3 install discord.py" 
+                    "PyPI": "pip3 install nextcord" 
                 }
 			},
-			"Do not install Discord module": {
+			"Do not install Nextcord module": {
                 "packages": false
 			}
 		};
@@ -195,81 +195,7 @@ function activate(context) {
         };
 	});
     context.subscriptions.push(pyBotTemplate);
-    
-    // Generate a javascript template bot (Discord.js)
-	let jsBotTemplate = vscode.commands.registerCommand('discord-tools.jsBotTemplate', async () =>  {
 
-        const legend = {
-            "Install packages": {
-                "packages": true,
-				"package_manager": { 
-                    "npm": "npm install ", 
-                    "yarn": "yarn install" 
-                }
-			},
-			"Do not install packages": {
-                "packages": false
-			}
-		};
-
-
-		let library = await vscode.window.showQuickPick(Object.keys(legend), { "placeHolder": "Select" });
-		if (library) {
-
-            library = legend[library]
-            
-            if (library["packages"] == true) {
-                
-                // @ts-ignore
-                let packageManager = await vscode.window.showQuickPick(Object.keys(library.package_manager), { "placeHolder": 'Select a package manager' });
-                
-                if (packageManager) {
-                    // Create the bot template
-                    jsTools.jsCreateTemplateBot();
-                    
-                    // Download packages
-                    let terminal = vscode.window.createTerminal({ "hideFromUser": false, "name": "Install packages"});
-                    terminal.show();
-                    // @ts-ignore
-                    terminal.sendText(library.package_manager[packageManager]);
-                    
-                    vscode.window.showInformationMessage("Packages downloaded!");
-                }
-            } else {
-                // Create the bot template
-                jsTools.jsCreateTemplateBot();
-            }  
-        };
-	});
-    context.subscriptions.push(jsBotTemplate);
-
-    // Generate a Java template bot (JDA)
-    const jdaBotTemplate=vscode.commands.registerCommand('discord-tools.jdaBotTemplate', async () =>  {
-        const legend = {
-
-			"Do not download dependencies and build project": {
-                "build": false
-			},
-
-			"Download dependencies and build project": {
-                "build": true
-			}
-		};
-
-		let library = await vscode.window.showQuickPick(Object.keys(legend), { "placeHolder": "Select" });
-        let groupId = await vscode.window.showInputBox({value: "group.id", placeHolder:"com.example.project"});
-        let artifactId = await vscode.window.showInputBox({value: "artifact-id", placeHolder:"example-discord-bot"});
-
-		library = legend[library];
-
-        if(groupId&&artifactId){
-            javaTools.jdaCreateTemplateBot(groupId,artifactId,library?library["build"]:false); 
-        }else{
-            vscode.window.showErrorMessage("Please enter valid artifact coordinates");
-        }
-	});
-    context.subscriptions.push(jdaBotTemplate);
-    
     // Open the Discord bot Documention
 	let openDiscordDoc = vscode.commands.registerCommand('discord-tools.openDiscordDoc', function () {    
 
@@ -279,7 +205,7 @@ function activate(context) {
             const document = editor.document;
 
             // Supported langues
-            const supportedLanguages = ["javascript", "python", "typescript", "java"];
+            const supportedLanguages = ["python"];
             // Get the good documentation
             const language = document.languageId;
 
@@ -289,39 +215,13 @@ function activate(context) {
             }
 
             const languages = {
-                "javascript": {
-                    "Discord.js": {
-                        "classic": "https://discord.js.org/#/docs/main/stable/general/welcome",
-                        "search": "https://discord.js.org/#/docs/main/stable/search?query="
-                    },
-                    "Eris": {
-                        "classic": "https://abal.moe/Eris/docs/getting-started",
-                        "search": null
-                    } 
-                },
                 "python": {
-                    "Discord.py": {
-                        "classic": "https://discordpy.readthedocs.io/en/latest/api.html",
-                        "search": "https://discordpy.readthedocs.io/en/latest/search.html?q="
-                    },
-                    "Pycord": {
-                        "classic": "https://docs.pycord.dev/en/master/api.html",
-                        "search": "https://docs.pycord.dev/en/master/search.html?q="
+                    "Nextcord": {
+                        "classic": "https://nextcord.readthedocs.io/en/latest/api.html",
+                        "search": "https://nextcord.readthedocs.io/en/latest/search.html?q="
                     }
-                },
-                "typescript": {
-                    "Harmony": {
-                        "classic": "https://doc.deno.land/https/raw.githubusercontent.com/harmonyland/harmony/main/mod.ts",
-                        "search": null
-                    }
-                },
-                "java": {
-                    "JDA": {
-                        "classic": "https://ci.dv8tion.net/job/JDA/javadoc/index.html",
-                        "search": null
-                    } 
                 }
-            };
+            }
 
             const selection = editor.selection;
             // Get the word within the selection

@@ -1,6 +1,6 @@
 {
-	"name": "discord-tools",
-	"displayName": "Discord Tools",
+	"name": "nextcord-helper",
+	"displayName": "Nextcord Helper",
 	"description": "Discord chat, bot template, snippets, theme and more!",
 	"icon": "images/logo.png",
 	"version": "1.5.0",
@@ -20,19 +20,12 @@
 		"discord",
 		"discord bot",
 		"discord.py",
-		"pycord",
-		"discord.js",
-		"jda",
-		"eris",
-		"harmony",
-		"deno",
-		"discord theme",
-		"dark theme"
+		"nextcord",
+		"nextcord.py"
 	],
 	"categories": [
 		"Other",
-		"Snippets",
-		"Themes"
+		"Snippets"
 	],
 	"activationEvents": [
 		"*"
@@ -42,17 +35,7 @@
 		"commands": [
 			{
 				"command": "discord-tools.pyBotTemplate",
-				"title": "Generate a python template bot (Discord.py)",
-				"category": "Discord Template"
-			},
-			{
-				"command": "discord-tools.jsBotTemplate",
-				"title": "Generate a javascript template bot (Discord.js)",
-				"category": "Discord Template"
-			},
-			{
-				"command": "discord-tools.jdaBotTemplate",
-				"title": "Generate a Java template bot (JDA)",
+				"title": "Generate a python template bot (Nextcord)",
 				"category": "Discord Template"
 			},
 			{
@@ -105,10 +88,6 @@
 					"when": "workspaceFolderCount > 0"
 				},
 				{
-					"command": "discord-tools.jsBotTemplate",
-					"when": "workspaceFolderCount > 0"
-				},
-				{
 					"command": "discord-tools.openDiscordDoc",
 					"when": "workspaceFolderCount > 0"
 				}
@@ -117,34 +96,7 @@
 		"snippets": [
 			{
 				"language": "python",
-				"path": "./snippets/discordpySnippets.code-snippets"
-			},
-			{
-				"language": "python",
-				"path": "./snippets/pycordSnippets.code-snippets"
-			},
-			{
-				"language": "javascript",
-				"path": "./snippets/discordjsSnippets.code-snippets"
-			},
-			{
-				"language": "javascript",
-				"path": "./snippets/erisSnippets.code-snippets"
-			},
-			{
-				"language": "typescript",
-				"path": "./snippets/harmonySnippets.code-snippets"
-			},
-			{
-				"language": "java",
-				"path": "./snippets/jdaSnippets.code-snippets"
-			}
-		],
-		"themes": [
-			{
-				"label": "Discord Theme (Dark)",
-				"uiTheme": "vs-dark",
-				"path": "./themes/discordTheme-color-theme.json"
+				"path": "./snippets/nextcordSnippets.code-snippets"
 			}
 		],
 		"views": {
@@ -157,45 +109,16 @@
 		},
 		"configuration": {
 			"type": "object",
-			"title": "Discord Tools",
+			"title": "NextcordHelper",
 			"properties": {
 				"discord-documentation.pythonWrapper": {
 					"type": "string",
 					"markdownDescription": "Open the Discord bot Documentation with/without a research.\nSelect your python wrapper",
 					"enum": [
-						"Discord.py",
-						"Pycord"
+						"Nextcord"
 					],
 					"uniqueItems": true,
-					"default": "Discord.py"
-				},
-				"discord-documentation.javaWrapper": {
-					"type": "string",
-					"markdownDescription": "Open the Discord bot Documentation with/without a research.\nSelect your python wrapper",
-					"enum": [
-						"JDA"
-					],
-					"uniqueItems": true,
-					"default": "JDA"
-				},
-				"discord-documentation.javascriptWrapper": {
-					"type": "string",
-					"markdownDescription": "Open the Discord bot Documentation with/without a research.\nSelect your python wrapper",
-					"enum": [
-						"Discord.js",
-						"Eris"
-					],
-					"uniqueItems": true,
-					"default": "Discord.js"
-				},
-				"discord-documentation.typescriptWrapper": {
-					"type": "string",
-					"markdownDescription": "Open the Discord bot Documentation with/without a research.\nSelect your python wrapper",
-					"enum": [
-						"Harmony"
-					],
-					"uniqueItems": true,
-					"default": "Harmony"
+					"default": "Nextcord"
 				},
 				"discord-chat.token": {
 					"type": "string",

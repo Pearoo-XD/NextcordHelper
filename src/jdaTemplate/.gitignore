@@ -1,7 +1,0 @@
-# Maven
-target/
-pom.xml.versionsBackup
-
-# secrets
-config.json
-
