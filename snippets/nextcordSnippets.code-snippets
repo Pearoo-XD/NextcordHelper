@@ -1,14 +1,14 @@
 {
 	"Default Discord bot main.py file": {
-		"prefix": ["ncd.index", "ncd.main", "ncd.bot", "ncd.client"],
+		"prefix": ["ncd.index", "ncd.main", "ncd.bot", "ncd.client", "index", "main", "bot", "client"],
 		"body": [
 			"import nextcord",
             "from nextcord.ext import commands",
             "import os",
             "",
             "# The bot",
-            "client = commands.AutoShardedBot(command_prefix = \"prefix\", intents = nextcord.Intents.default())",
-            "client.remove_command(\"help\")",
+            "client = commands.AutoShardedBot(command_prefix = \"${1:prefix}\", intents = nextcord.Intents.default()) # Prefix is used for commands (i.e. in !help, ! is the prefix)",
+            "client.remove_command(\"help\") # Remove the default python help command. This is optional.",
             "",
             "# Load cogs",
             "for filename in os.listdir(\"./cogs\"):",
@@ -18,19 +18,18 @@
             "@client.event",
             "async def on_ready():",
             "\tprint(f\"Bot successfully started!\")",
-            "\tawait client.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.watching, name=f\"{client.command_prefix}help\"))",
-            "",
-            "client.run(\"INSERT_YOUR_TOKEN_HERE\")"
+            "\tawait client.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.watching, name=f\"{client.command_prefix}help\")) # If ! is the prefix, the bot's status",
+            "                                                                                                                                           would be '!help'",
+            "client.run(\"${2:INSERT_YOUR_TOKEN_HERE}\") # A token is like a password, DO NOT SHARE IT!"
 		],
         "description": "Create a basic Discord bot main.py file."
     },
 
     "Default Discord bot cog": {
-		"prefix": "ncd.cog",
+		"prefix": ["ncd.cog", "cog"],
 		"body": [
-			"import discord",
-            "from discord.ext import commands",
-            "",
+			"import nextcord",
+            "from nextcord.ext import commands",
             "",
             "class ${1:CogName}(commands.Cog):",
             "\tdef __init__(self, client):",
@@ -49,7 +48,7 @@
     },
 
     "Default Discord bot command": {
-		"prefix": ["ncd.cmd", "ncd.command"],
+		"prefix": ["ncd.cmd", "ncd.command", "cmd", "command"],
 		"body": [
             "@commands.command(aliases=[\"${1:alias1}\", \"${2:alias2}\"])",
             "async def ${3:commandName}(ctx):",
@@ -59,7 +58,7 @@
     },
 
     "Complex Discord bot command": {
-		"prefix": ["ncd.cmd+", "ncd.command+"],
+		"prefix": ["ncd.cmd+", "ncd.command+", "cmd+", "command+"],
 		"body": [
             "@commands.command(aliases=[\"${1:alias1}\"], usage=\"${2:usage}\", description = \"${3:description}\")",
             "@commands.guild_only(${4:True})",
@@ -73,7 +72,7 @@
     },
 
     "Default Discord bot embed": {
-		"prefix": "ncd.embed",
+		"prefix": ["ncd.embed", "ncd.em", "embed", "em"],
 		"body": [
             "embed=nextcord.Embed(title=\"${1:title}\", description=\"${2:description}\", color=${3:nextcord.Colour.white()})",
             "embed.add_field(name=\"${4:field}\", value=\"${5:value}\", inline=${6:False})",
@@ -83,7 +82,7 @@
     },
 
     "Complex Discord bot embed": {
-		"prefix": "ncd.embed+",
+		"prefix": ["ncd.embed+", "ncd.em+", "embed+", "em+"],
 		"body": [
             "embed=nextcord.Embed(title=\"${1:title}\", description=\"${2:description}\", color=${3:nextcord.Colour.white()})",
             "embed.set_author(name=\"${4:name}\", url=\"${5:url}\", icon_url=\"${6:icon}\")",

@@ -1,19 +1,15 @@
-![CodeFactor](https://img.shields.io/codefactor/grade/github/Darkempire78/Discord-Tools?style=for-the-badge)
-![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/Darkempire78.discord-tools?style=for-the-badge)
-<a href="https://marketplace.visualstudio.com/items?itemName=Darkempire78.discord-tools"><img src="https://img.shields.io/visual-studio-marketplace/i/Darkempire78.discord-tools?style=for-the-badge"></a>
-
 # NextcordHelper
 
 NextcordHelper is a fork of [Discord Tools](https://github.com/Darkempire78/Discord-Tools). If you want to use discord.py instead of nextcord, please use Discord Tools instead of NextcordHelper.
 
-[**GitHub**](https://github.com/Pearoo-XD/NextcordHelper) - [**VSC Marketplace**](https://marketplace.visualstudio.com/items?itemName=Darkempire78.discord-tools) - [**Open VSX**](https://open-vsx.org/extension/Darkempire78/discord-tools/1.4.3)
+[**GitHub**](https://github.com/Pearoo-XD/NextcordHelper)
 
 ## Features
 
 ### [BETA] Discord chat in VSCode: 
 ⚠️ **This feature is currently in BETA, so it is possible that some features are not yet implemented and you may find bugs. If you find an error, report it to Darkempire78 (OC), not me, because I can't develop it. Thank you for reporting it [here](https://github.com/Darkempire78/Discord-Tools/issues/new)**.
 
-⚠️ It seems that the way this extension works is not entirely within Discord's terms of service. See the [Discord's terms](https://discord.com/terms) for more.
+⚠️ It seems that the way this extension works is not entirely within Discord's Terms of Service. See the [Discord TOS](https://discord.com/terms) for more.
 However, please note that this extension does not collect personal information and does not automatically respond to messages! **USE IT AT YOUR OWN RISK!**
 
 #### Instalation
